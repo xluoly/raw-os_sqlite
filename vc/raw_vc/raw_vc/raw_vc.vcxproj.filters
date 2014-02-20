@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="port">
+      <UniqueIdentifier>{ef58a9ba-120a-4526-8961-e37bbff3ac57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kernel">
+      <UniqueIdentifier>{b7a08504-2499-48c6-acd6-e7c43f8c4c14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extension">
+      <UniqueIdentifier>{b0b48ad8-a22b-44ba-93c0-2b8e6790253e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extension\mm">
+      <UniqueIdentifier>{bc7a8357-0ada-4373-8ded-e6c323c75d2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extension\lib">
+      <UniqueIdentifier>{f02b1bf6-5001-424a-937f-32a7f98f63ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="posix">
+      <UniqueIdentifier>{1beeccdd-4006-4058-8756-51463abaf128}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extension\shell">
+      <UniqueIdentifier>{a93d21ee-ed72-4444-9bb2-91e637e178b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extension\driver_interface">
+      <UniqueIdentifier>{2def71bd-e181-4831-bc6b-768d40f1faa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extension\mm\slab">
+      <UniqueIdentifier>{c3791312-b2f8-4bec-9907-e457d25a5d42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extension\rf">
+      <UniqueIdentifier>{92acb3f9-fb6a-4776-af0d-d0ab88af011d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extension\protothread">
+      <UniqueIdentifier>{34f75081-e858-4d3f-8962-e66f29841610}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rtc">
+      <UniqueIdentifier>{c281ed2a-369a-4df6-b05c-8bc1f4a22507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fatfs">
+      <UniqueIdentifier>{33c1f1a9-d077-486b-992e-62c7cdfadc08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sqlite">
+      <UniqueIdentifier>{3d50adfe-94be-4ae3-824d-4d102d42542d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{bb3e0f8c-8c7a-435b-85e2-1275073d7ad0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\raw-os\raw_timer.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_block.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_event.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_mutex.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_obj.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_pend.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_queue.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_sched.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_sem.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_system.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_task.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_tick.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_byte.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\raw_page.c">
+      <Filter>extension\mm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\raw_malloc.c">
+      <Filter>extension\mm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_queue_size.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_mqueue.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\posix\pthread_mutex.c">
+      <Filter>posix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\posix\pthread_cond.c">
+      <Filter>posix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\posix\time.c">
+      <Filter>posix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\posix\pthread.c">
+      <Filter>posix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\port\port_hook.c">
+      <Filter>port</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\posix\semphore.c">
+      <Filter>posix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\posix\mqueue.c">
+      <Filter>posix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\lib\string.c">
+      <Filter>extension\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\lib\fifo.c">
+      <Filter>extension\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\port\win_util.c">
+      <Filter>port</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\shell\rsh.c">
+      <Filter>extension\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\lib\simple_printf.c">
+      <Filter>extension\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\driver_interface\raw_driver_interface.c">
+      <Filter>extension\driver_interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\slab\raw_buddy.c">
+      <Filter>extension\mm\slab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\slab\raw_frame.c">
+      <Filter>extension\mm\slab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\slab\raw_slab.c">
+      <Filter>extension\mm\slab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\rf\active_object.c">
+      <Filter>extension\rf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\rf\active_time_event.c">
+      <Filter>extension\rf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\rf\active_memory.c">
+      <Filter>extension\rf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\rf\active_queue_broadcast.c">
+      <Filter>extension\rf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\port\port.c">
+      <Filter>port</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_idle.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\process.c">
+      <Filter>extension\protothread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\clock_port.c">
+      <Filter>extension\protothread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\etimer.c">
+      <Filter>extension\protothread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\timer.c">
+      <Filter>extension\protothread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\stimer.c">
+      <Filter>extension\protothread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_task_0.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\lib\raw_mlock.c">
+      <Filter>extension\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_stm.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_idle_event.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\lib\raw_work_queue.c">
+      <Filter>extension\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\lib\rb_tree.c">
+      <Filter>extension\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_task_queue_size.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\raw_tlsf.c">
+      <Filter>extension\mm\slab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_task_sem.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\port\raw_trace_port.c">
+      <Filter>port</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_queue_buffer.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\rtc\rtc.c">
+      <Filter>rtc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\rtc\rtc_os.c">
+      <Filter>rtc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_stat.c">
+      <Filter>kernel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\lib\fifo_lock.c">
+      <Filter>extension\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\heap_1.c">
+      <Filter>extension\mm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\heap_2.c">
+      <Filter>extension\mm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\heap_3.c">
+      <Filter>extension\mm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\extension\mm\heap_4.c">
+      <Filter>extension\mm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\fatfs\diskio.c">
+      <Filter>fatfs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\fatfs\ff.c">
+      <Filter>fatfs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\fatfs\option\syscall.c">
+      <Filter>fatfs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\fatfs\option\cc936.c">
+      <Filter>fatfs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\alter.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\analyze.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\attach.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\auth.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\backup.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\bitvec.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\btmutex.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\btree.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\build.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\callback.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\complete.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\ctime.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\date.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\delete.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\expr.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fault.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fkey.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts1_hash.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts1_porter.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts1_tokenizer1.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts2_hash.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts2_icu.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts2_porter.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts2_tokenizer.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts2_tokenizer1.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_aux.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_expr.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_hash.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_icu.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_porter.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_snippet.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_tokenize_vtab.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_tokenizer.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_tokenizer1.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_unicode.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_unicode2.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\fts3_write.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\func.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\global.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\hash.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\insert.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\journal.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\legacy.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\loadext.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\malloc.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\memjournal.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\mutex.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\mutex_noop.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\mutex_unix.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\mutex_w32.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\notify.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\opcodes.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\os.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\os_win.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\pager.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\parse.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\pcache.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\pcache1.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\pragma.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\prepare.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\printf.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\random.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\resolve.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\rowset.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\select.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\status.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\tokenize.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\trigger.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\update.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\utf.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\util.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\vacuum.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\vdbe.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\vdbeapi.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\vdbeaux.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\vdbeblob.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\vdbemem.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\vdbesort.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\vdbetrace.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\vtab.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\wal.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\walker.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\where.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\smain.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\stable.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\bit_search_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\event_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\fatfs_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\idle_event_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\interrupt_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\main.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\mem_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\mqueue_test2.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\multipend.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\mutex_test .c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\queue_buffer_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\rbtree_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\sem_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\task_0_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\task_queue_size_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\task_sem_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\task_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\timer_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\tlsf_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\user_extension.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\work_queue_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\zero_interrupt_test.c">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\mem1.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

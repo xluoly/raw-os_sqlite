@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\fatfs\diskio.c" />
+    <ClCompile Include="..\..\..\fatfs\ff.c" />
+    <ClCompile Include="..\..\..\fatfs\option\cc936.c" />
+    <ClCompile Include="..\..\..\fatfs\option\syscall.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\driver_interface\raw_driver_interface.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\lib\fifo.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\lib\fifo_lock.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\lib\raw_mlock.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\lib\raw_work_queue.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\lib\rb_tree.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\lib\simple_printf.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\lib\string.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\heap_1.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\heap_2.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\heap_3.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\heap_4.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\raw_malloc.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\raw_page.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\raw_tlsf.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\slab\raw_buddy.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\slab\raw_frame.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\mm\slab\raw_slab.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\posix\mqueue.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\posix\pthread.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\posix\pthread_cond.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\posix\pthread_mutex.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\posix\semphore.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\posix\time.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\clock_port.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\etimer.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\process.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\stimer.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\protothread\timer.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\rf\active_memory.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\rf\active_object.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\rf\active_queue_broadcast.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\rf\active_time_event.c" />
+    <ClCompile Include="..\..\..\raw-os\extension\shell\rsh.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_block.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_byte.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_event.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_idle.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_idle_event.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_mqueue.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_mutex.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_obj.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_pend.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_queue.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_queue_buffer.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_queue_size.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_sched.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_sem.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_stat.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_stm.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_system.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_task.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_task_0.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_task_queue_size.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_task_sem.c" />
+    <ClCompile Include="..\..\..\raw-os\raw_tick.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\raw-os\raw_timer.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\..\rtc\rtc.c" />
+    <ClCompile Include="..\..\..\rtc\rtc_os.c" />
+    <ClCompile Include="..\..\..\sqlite\alter.c" />
+    <ClCompile Include="..\..\..\sqlite\analyze.c" />
+    <ClCompile Include="..\..\..\sqlite\attach.c" />
+    <ClCompile Include="..\..\..\sqlite\auth.c" />
+    <ClCompile Include="..\..\..\sqlite\backup.c" />
+    <ClCompile Include="..\..\..\sqlite\bitvec.c" />
+    <ClCompile Include="..\..\..\sqlite\btmutex.c" />
+    <ClCompile Include="..\..\..\sqlite\btree.c" />
+    <ClCompile Include="..\..\..\sqlite\build.c" />
+    <ClCompile Include="..\..\..\sqlite\callback.c" />
+    <ClCompile Include="..\..\..\sqlite\complete.c" />
+    <ClCompile Include="..\..\..\sqlite\ctime.c" />
+    <ClCompile Include="..\..\..\sqlite\date.c" />
+    <ClCompile Include="..\..\..\sqlite\delete.c" />
+    <ClCompile Include="..\..\..\sqlite\expr.c" />
+    <ClCompile Include="..\..\..\sqlite\fault.c" />
+    <ClCompile Include="..\..\..\sqlite\fkey.c" />
+    <ClCompile Include="..\..\..\sqlite\fts1_hash.c" />
+    <ClCompile Include="..\..\..\sqlite\fts1_porter.c" />
+    <ClCompile Include="..\..\..\sqlite\fts1_tokenizer1.c" />
+    <ClCompile Include="..\..\..\sqlite\fts2_hash.c" />
+    <ClCompile Include="..\..\..\sqlite\fts2_icu.c" />
+    <ClCompile Include="..\..\..\sqlite\fts2_porter.c" />
+    <ClCompile Include="..\..\..\sqlite\fts2_tokenizer.c" />
+    <ClCompile Include="..\..\..\sqlite\fts2_tokenizer1.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_aux.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_expr.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_hash.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_icu.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_porter.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_snippet.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_tokenizer.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_tokenizer1.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_tokenize_vtab.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_unicode.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_unicode2.c" />
+    <ClCompile Include="..\..\..\sqlite\fts3_write.c" />
+    <ClCompile Include="..\..\..\sqlite\func.c" />
+    <ClCompile Include="..\..\..\sqlite\global.c" />
+    <ClCompile Include="..\..\..\sqlite\hash.c" />
+    <ClCompile Include="..\..\..\sqlite\insert.c" />
+    <ClCompile Include="..\..\..\sqlite\journal.c" />
+    <ClCompile Include="..\..\..\sqlite\legacy.c" />
+    <ClCompile Include="..\..\..\sqlite\loadext.c" />
+    <ClCompile Include="..\..\..\sqlite\malloc.c" />
+    <ClCompile Include="..\..\..\sqlite\mem1.c" />
+    <ClCompile Include="..\..\..\sqlite\memjournal.c" />
+    <ClCompile Include="..\..\..\sqlite\mutex.c" />
+    <ClCompile Include="..\..\..\sqlite\mutex_noop.c" />
+    <ClCompile Include="..\..\..\sqlite\mutex_unix.c" />
+    <ClCompile Include="..\..\..\sqlite\mutex_w32.c" />
+    <ClCompile Include="..\..\..\sqlite\notify.c" />
+    <ClCompile Include="..\..\..\sqlite\opcodes.c" />
+    <ClCompile Include="..\..\..\sqlite\os.c" />
+    <ClCompile Include="..\..\..\sqlite\os_win.c" />
+    <ClCompile Include="..\..\..\sqlite\pager.c" />
+    <ClCompile Include="..\..\..\sqlite\parse.c" />
+    <ClCompile Include="..\..\..\sqlite\pcache.c" />
+    <ClCompile Include="..\..\..\sqlite\pcache1.c" />
+    <ClCompile Include="..\..\..\sqlite\pragma.c" />
+    <ClCompile Include="..\..\..\sqlite\prepare.c" />
+    <ClCompile Include="..\..\..\sqlite\printf.c" />
+    <ClCompile Include="..\..\..\sqlite\random.c" />
+    <ClCompile Include="..\..\..\sqlite\resolve.c" />
+    <ClCompile Include="..\..\..\sqlite\rowset.c" />
+    <ClCompile Include="..\..\..\sqlite\select.c" />
+    <ClCompile Include="..\..\..\sqlite\smain.c" />
+    <ClCompile Include="..\..\..\sqlite\status.c" />
+    <ClCompile Include="..\..\..\sqlite\stable.c" />
+    <ClCompile Include="..\..\..\sqlite\tokenize.c" />
+    <ClCompile Include="..\..\..\sqlite\trigger.c" />
+    <ClCompile Include="..\..\..\sqlite\update.c" />
+    <ClCompile Include="..\..\..\sqlite\utf.c" />
+    <ClCompile Include="..\..\..\sqlite\util.c" />
+    <ClCompile Include="..\..\..\sqlite\vacuum.c" />
+    <ClCompile Include="..\..\..\sqlite\vdbe.c" />
+    <ClCompile Include="..\..\..\sqlite\vdbeapi.c" />
+    <ClCompile Include="..\..\..\sqlite\vdbeaux.c" />
+    <ClCompile Include="..\..\..\sqlite\vdbeblob.c" />
+    <ClCompile Include="..\..\..\sqlite\vdbemem.c" />
+    <ClCompile Include="..\..\..\sqlite\vdbesort.c" />
+    <ClCompile Include="..\..\..\sqlite\vdbetrace.c" />
+    <ClCompile Include="..\..\..\sqlite\vtab.c" />
+    <ClCompile Include="..\..\..\sqlite\wal.c" />
+    <ClCompile Include="..\..\..\sqlite\walker.c" />
+    <ClCompile Include="..\..\..\sqlite\where.c" />
+    <ClCompile Include="..\..\port\port.c" />
+    <ClCompile Include="..\..\port\port_hook.c" />
+    <ClCompile Include="..\..\port\raw_trace_port.c" />
+    <ClCompile Include="..\..\port\win_util.c" />
+    <ClCompile Include="..\..\test\bit_search_test.c" />
+    <ClCompile Include="..\..\test\event_test.c" />
+    <ClCompile Include="..\..\test\fatfs_test.c" />
+    <ClCompile Include="..\..\test\idle_event_test.c" />
+    <ClCompile Include="..\..\test\interrupt_test.c" />
+    <ClCompile Include="..\..\test\main.c" />
+    <ClCompile Include="..\..\test\mem_test.c" />
+    <ClCompile Include="..\..\test\mqueue_test2.c" />
+    <ClCompile Include="..\..\test\multipend.c" />
+    <ClCompile Include="..\..\test\mutex_test .c" />
+    <ClCompile Include="..\..\test\queue_buffer_test.c" />
+    <ClCompile Include="..\..\test\rbtree_test.c" />
+    <ClCompile Include="..\..\test\sem_test.c" />
+    <ClCompile Include="..\..\test\task_0_test.c" />
+    <ClCompile Include="..\..\test\task_queue_size_test.c" />
+    <ClCompile Include="..\..\test\task_sem_test.c" />
+    <ClCompile Include="..\..\test\task_test.c" />
+    <ClCompile Include="..\..\test\timer_test.c" />
+    <ClCompile Include="..\..\test\tlsf_test.c" />
+    <ClCompile Include="..\..\test\user_extension.c" />
+    <ClCompile Include="..\..\test\work_queue_test.c" />
+    <ClCompile Include="..\..\test\zero_interrupt_test.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C55207EC-8E8C-4D0A-9F18-A09F85724352}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>raw_vc</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../port;../../../raw-os/extension/include;../../../raw-os/extension/include/stm</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../raw-os/include;../../port;../../../raw-os/extension/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
