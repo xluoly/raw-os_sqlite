@@ -46,7 +46,7 @@
 				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
 				Optimization="2"
 				AdditionalIncludeDirectories="../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../port;../../../raw-os/extension/include;../../../raw-os/extension/include/stm"
-				PreprocessorDefinitions="NDEBUG,UNICODE,WIN32,NDEBUG"
+				PreprocessorDefinitions="NDEBUG;UNICODE;WIN32;RAW_OS"
 				GeneratePreprocessedFile="0"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
@@ -137,7 +137,7 @@
 				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
 				Optimization="4"
 				AdditionalIncludeDirectories="../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../port;../../../raw-os/extension/include;../../../raw-os/extension/include/stm"
-				PreprocessorDefinitions="UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,_CRT_NON_CONFORMING_SWPRINTFS"
+				PreprocessorDefinitions="UNICODE;WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_HAVE_SQLITE_CONFIG_H;RAW_OS;USE_FATFS"
 				GeneratePreprocessedFile="0"
 				ExceptionHandling="1"
 				RuntimeLibrary="3"
@@ -705,6 +705,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\..\sqlite\os_raw.c"
+					>
+				</File>
+				<File
 					RelativePath="..\..\..\sqlite\os_win.c"
 					>
 				</File>
@@ -1092,6 +1096,10 @@
 				>
 				<File
 					RelativePath="..\..\..\sqlite\btreeInt.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\sqlite\config.h"
 					>
 				</File>
 				<File

@@ -16,10 +16,6 @@
 #ifndef _SQLITEINT_H_
 #define _SQLITEINT_H_
 
-//#define SQLITE_OS_OTHER   1
-
-
-
 
 /*
 ** These #defines should enable >2GB file support on POSIX if the

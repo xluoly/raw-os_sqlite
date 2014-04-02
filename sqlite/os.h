@@ -20,6 +20,9 @@
 #ifndef _SQLITE_OS_H_
 #define _SQLITE_OS_H_
 
+#ifdef _HAVE_SQLITE_CONFIG_H
+#include "config.h"
+#endif
 /*
 ** Figure out if we are dealing with Unix, Windows, or some other
 ** operating system.  After the following block of preprocess macros,

@@ -29,10 +29,7 @@
 # error "The MEMORY_DEBUG macro is obsolete.  Use SQLITE_DEBUG instead."
 #endif
 
-#if defined(SQLITE_TEST) && defined(SQLITE_DEBUG)
-# ifndef SQLITE_DEBUG_OS_TRACE
-#   define SQLITE_DEBUG_OS_TRACE 0
-# endif
+#if defined(SQLITE_DEBUG_OS_TRACE) && defined(SQLITE_DEBUG)
   int sqlite3OSTrace = SQLITE_DEBUG_OS_TRACE;
 # define OSTRACE(X)          if( sqlite3OSTrace ) sqlite3DebugPrintf X
 #else

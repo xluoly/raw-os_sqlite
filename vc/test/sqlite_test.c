@@ -197,7 +197,6 @@ static void endTimer(void){
 */
 #define UNUSED_PARAMETER(x) (void)(x)
 
-#define RAW_OS
 #if defined(RAW_OS)
 #include <raw_api.h>
 
@@ -213,6 +212,10 @@ static PORT_STACK    sqlite_task_stack[SQLITE_TASK_STK_SIZE];
 static sqlite_task_param_t sqlite_task_param;
 
 #endif // RAW_OS
+
+#if defined(USE_FATFS)
+#include "ff.h"
+#endif
 
 /**************************************************************************
 ***************************************************************************
@@ -3566,7 +3569,51 @@ int sqlite_shell(int argc, char **argv){
   return rc;
 }
 
+
+void test(void)
+{
+    sqlite3 *db;
+    char *zErrMsg = 0;
+    int rc;
+    sqlite3_stmt *stmt;
+    int nCol;
+
+    rc = sqlite3_open("test.db", &db);
+    if (rc == SQLITE_OK)
+    {
+        rc = sqlite3_exec(db, "CREATE TABLE IF NOT EXISTS test (id INTEGER NOT NULL PRIMARY KEY, text VARCHAR(10))", NULL, 0, &zErrMsg);
+        if (rc != SQLITE_OK) fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        rc = sqlite3_exec(db, "INSERT INTO test VALUES (1, 'text1')", NULL, 0, &zErrMsg);
+        if (rc != SQLITE_OK) fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        
+        rc = sqlite3_prepare_v2(db, "SELECT * FROM test", -1, &stmt, 0);
+        if (rc == SQLITE_OK) {
+            int nCols = sqlite3_column_count(stmt);
+            if (nCols)
+            {
+                for (nCol = 0; nCol < nCols; nCol++)
+                    printf("%s\t", sqlite3_column_name(stmt, nCol));
+                printf("\n");
+                while ((rc = sqlite3_step(stmt)) == SQLITE_ROW)
+                    for (nCol = 0; nCol < nCols; nCol++)
+                        printf("%s\t", sqlite3_column_text(stmt, nCol));
+                printf("\n");
+            }
+            sqlite3_finalize(stmt);
+        }
+        sqlite3_close(db);
+    } else {
+        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+    }
+    
+    while (1) {}
+}
+
 #if defined(RAW_OS)
+#include <raw_api.h>
+extern RAW_U8 test_started_raw;
+
 void task_sqlite_shell(void *pParam){
   sqlite_task_param_t *task_param;
 
@@ -3574,14 +3621,30 @@ void task_sqlite_shell(void *pParam){
   sqlite_shell(task_param->argc, task_param->argv);
 }
 
-extern RAW_U8 test_started_raw;
+#endif //RAW_OS
 
 void sqlite_test(int argc, char **argv){
-  if (test_started_raw) {
-		return;
-	}
+#if defined(USE_FATFS)
+  FRESULT res;
+  FATFS fs;
 
-	test_started_raw = 1;
+  if (argc < 2)
+    return;
+
+  res = f_mount(&fs, "0:", 0);
+  printf("f_mount res is  %d\n", res);	
+
+  res = f_mkfs("0:", 0, 32);
+  printf("f_mkfs res is  %d\n", res);
+
+#endif
+
+#if defined(RAW_OS)
+  if (test_started_raw) {
+	return;
+  }
+
+  test_started_raw = 1;
   
   sqlite_task_param.argc = argc;
   sqlite_task_param.argv = argv;
@@ -3594,7 +3657,9 @@ void sqlite_test(int argc, char **argv){
 	                SQLITE_TASK_STK_SIZE ,
                   task_sqlite_shell,
                   1); 
+#else
+  sqlite_shell(argc, argv);
+#endif //RAW_OS
 }
 
-#endif // RAW_OS
 

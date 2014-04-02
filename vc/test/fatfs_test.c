@@ -139,7 +139,7 @@ static void task_fat(void * pParam)
 	
 	res = f_close(&file);
 	vc_port_printf("f_close return is %d\r\n", res);
-
+/*
 	rc = sqlite3_open("test222", &db);
 	
 	if( rc ){
@@ -155,7 +155,7 @@ static void task_fat(void * pParam)
 	//rc = sqlite3_exec(db, argv[2], callback, 0, &zErrMsg);
 	
 	sqlite3_close(db);
-
+*/
 	while (1);
 
 }

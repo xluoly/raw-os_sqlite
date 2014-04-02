@@ -73,12 +73,17 @@ RAW_U8 test_started_raw;
 
 int main(int argc, char * argv[])
 {
+#if defined(RAW_OS)
 	VCInit();
 	start_vc_timer(10);
-	raw_os_init();	
-	sqlite_test(argc, argv);
-	raw_os_start();
+	raw_os_init();
+#endif
 
+	sqlite_test(argc, argv);
+
+#if defined(RAW_OS)
+	raw_os_start();
+#endif
 	return 0;
 	
 }
