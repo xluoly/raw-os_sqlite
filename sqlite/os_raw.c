@@ -21,7 +21,7 @@
 **
 **    File-system: f_unlink(), f_getcwd(), f_stat()
 **    File IO:     f_open(), f_read(), f_write(), f_sync(), f_close()
-**    Other:       
+**    Other:       raw_time_sleep()
 **
 **   The following VFS features are omitted:
 **
@@ -72,6 +72,12 @@ struct rawFile {
   unsigned short int ctrlFlags;       /* Behavioral bits.  RAWFILE_* flags */
   int szChunk;                        /* Configured by FCNTL_CHUNK_SIZE */
 };
+
+/*******************************************************************************
+* External Functions                                                           *
+* These functions must be defined outside of the library by the application.   *
+*******************************************************************************/
+extern RAW_U16 raw_time_sleep(RAW_U16 hours, RAW_U16 minutes, RAW_U16 seconds, RAW_U32 milli);
 
 /*******************************************************************************
 * Static Function Prototypes                                                   *
@@ -587,7 +593,7 @@ static int rawOpen(
     assert(isDelete && !syncDir);
     rc = osGetTempname(MAXPATHNAME+2, zTmpname);
     if( rc!=SQLITE_OK ){
-      OSTRACE(("OPEN name=%s, rc=SQLITE_IOERR", zName));
+      OSTRACE(("OPEN name=%s, rc=SQLITE_IOERR\n", zName));
       return SQLITE_IOERR;
     }
     zName = zTmpname;
@@ -620,13 +626,13 @@ static int rawOpen(
 
   h = sqlite3MallocZero(sizeof(FIL));
   if( !h ){
-    OSTRACE(("OPEN name=%s, rc=SQLITE_IOERR_NOMEM", zName));
+    OSTRACE(("OPEN name=%s, rc=SQLITE_IOERR_NOMEM\n", zName));
     return SQLITE_IOERR_NOMEM;
   }
 
   rc = f_open(h, zName, openFlags);
   if( rc != FR_OK ){
-    OSTRACE(("OPEN name=%s, rc=%s", zName, fatfsErrName(rc)));
+    OSTRACE(("OPEN name=%s, rc=%s\n", zName, fatfsErrName(rc)));
     return SQLITE_CANTOPEN;
   }
 
@@ -829,9 +835,11 @@ static int rawRandomness(sqlite3_vfs *pVfs, int nBuf, char *zBuf){
 ** Sleep for a little while.  Return the amount of time slept.
 */
 static int rawSleep(sqlite3_vfs *pVfs, int microsec){
-  //Sleep((microsec+999)/1000);
+  int milliseconds = (microsec + 999) / 1000;
   UNUSED_PARAMETER(pVfs);
-  return ((microsec+999)/1000)*1000;
+
+  raw_time_sleep(0, 0, 0, milliseconds);
+  return milliseconds * 1000;
 }
 
 /*
