@@ -5,7 +5,7 @@
 
 #define portBYTE_ALIGNMENT          4
 
-#define configTOTAL_HEAP_SIZE       4096
+#define configTOTAL_HEAP_SIZE       (1 * 1024 * 1024)
 
 #if (portBYTE_ALIGNMENT == 8)
 	#define portBYTE_ALIGNMENT_MASK ( 0x0007 )

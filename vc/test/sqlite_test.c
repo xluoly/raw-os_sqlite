@@ -3617,28 +3617,36 @@ extern RAW_U8 test_started_raw;
 void task_sqlite_shell(void *pParam){
   sqlite_task_param_t *task_param;
 
-  task_param = (sqlite_task_param_t *)pParam;
-  sqlite_shell(task_param->argc, task_param->argv);
-}
-
-#endif //RAW_OS
-
-void sqlite_test(int argc, char **argv){
 #if defined(USE_FATFS)
   FRESULT res;
   FATFS fs;
 
-  if (argc < 2)
-    return;
-
   res = f_mount(&fs, "0:", 0);
-  printf("f_mount res is  %d\n", res);	
+  if (FR_OK != res)
+  {
+    fprintf(stderr, "Fail to mount fs.\n");
+    system("PAUSE"); 
+    exit(1);
+  }
 
-  res = f_mkfs("0:", 0, 32);
-  printf("f_mkfs res is  %d\n", res);
-
+  res = f_mkfs("0:", 0, 0);
+  if (FR_OK != res)
+  {
+    fprintf(stderr, "Fail to format fs.\n");
+    system("PAUSE"); 
+    exit(1);
+  }
 #endif
 
+  task_param = (sqlite_task_param_t *)pParam;
+  sqlite_shell(task_param->argc, task_param->argv);
+  while (1);
+}
+#endif //RAW_OS
+
+extern int assign_drives (void);
+
+void sqlite_test(int argc, char **argv){
 #if defined(RAW_OS)
   if (test_started_raw) {
 	return;
@@ -3658,6 +3666,26 @@ void sqlite_test(int argc, char **argv){
                   task_sqlite_shell,
                   1); 
 #else
+#if defined(USE_FATFS)
+  FRESULT res;
+  FATFS fs;
+
+  res = f_mount(&fs, "0:", 0);
+  if (FR_OK != res)
+  {
+    fprintf(stderr, "Fail to mount fs.\n");
+    system("PAUSE"); 
+    exit(1);
+  }
+
+  res = f_mkfs("0:", 0, 0);
+  if (FR_OK != res)
+  {
+    fprintf(stderr, "Fail to format fs.\n");
+    system("PAUSE"); 
+    exit(1);
+  }
+#endif
   sqlite_shell(argc, argv);
 #endif //RAW_OS
 }
