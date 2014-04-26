@@ -7,6 +7,7 @@
 /* storage control module to the FatFs module with a defined API.        */
 /*-----------------------------------------------------------------------*/
 #include "raw_api.h"
+#include "rtc.h"
 #include "diskio.h"		/* FatFs lower layer API */
 #include "ff.h"
 //#include "usbdisk.h"	/* Example: USB drive control */
@@ -124,8 +125,18 @@ DRESULT disk_ioctl (
 
 DWORD get_fattime (void)
 {
+    CLK_DATE_TIME dt;
 
- 	return 0;
+    /* Get local time */
+    Clk_GetDateTime(&dt);
+
+    /* Pack date and time into a DWORD variable */
+    return 	  ((DWORD)(dt.Yr - 1980) << 25)
+        | ((DWORD)dt.Yr << 21)
+        | ((DWORD)dt.Day << 16)
+        | (WORD)(dt.Hr << 11)
+        | (WORD)(dt.Min << 5)
+        | (WORD)(dt.Sec >> 1);
 }
 
 

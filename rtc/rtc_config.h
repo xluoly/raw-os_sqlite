@@ -110,7 +110,7 @@
 #endif
 
 
-#define  CLK_TRACE_LEVEL                        TRACE_LEVEL_DBG
+#define  CLK_TRACE_LEVEL                        TRACE_LEVEL_OFF
 
 #define  CLK_TRACE                              vc_port_printf
 
