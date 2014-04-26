@@ -49,7 +49,10 @@
 * Type definitions, macros, and constants                                      *
 *******************************************************************************/
 #define MAXPATHNAME  ( 256 )
+
+#ifndef MAXDWORD
 #define MAXDWORD     ( 0xFFFFFFFF )   /* 4294967295 */
+#endif
 
 /*
 ** Allowed values for ctrlFlags
@@ -528,7 +531,7 @@ static int rawDeviceCharacteristics(sqlite3_file *id){
 */
 static int rawOpen(
   sqlite3_vfs *pVfs,        /* The VFS for which this is the xOpen method */
-  const char *zPath,        /* Pathname of file to be opened */
+  const char *zName,        /* Pathname of file to be opened (UTF-8) */
   sqlite3_file *id,         /* Write the SQLite file handle here */
   int flags,                /* Open mode flags */
   int *pOutFlags            /* Status return flags */
@@ -559,7 +562,6 @@ static int rawOpen(
   ** a temporary file. Use this buffer to store the file name in.
   */
   char zTmpname[MAXPATHNAME+2];
-  const char *zName = zPath;
 
   /* Check the following statements are true: 
   **
@@ -630,7 +632,7 @@ static int rawOpen(
     return SQLITE_IOERR_NOMEM;
   }
 
-  rc = f_open(h, zName, openFlags);
+  rc = f_open(h, (TCHAR *)zName, openFlags);
   if( rc != FR_OK ){
     OSTRACE(("OPEN name=%s, rc=%s\n", zName, fatfsErrName(rc)));
     return SQLITE_CANTOPEN;
@@ -671,7 +673,7 @@ static int rawOpen(
 */
 static int rawDelete(
   sqlite3_vfs *pVfs,          /* Not used */
-  const char *zFilename,      /* Name of file to delete */
+  const char *zFilename,      /* Name of file to delete (UTF-8) */
   int syncDir                 /* Not used */
 ){
   int rc;
@@ -682,7 +684,7 @@ static int rawDelete(
   SimulateIOError(return SQLITE_IOERR_DELETE);
 
   // Delete file
-  rc = f_unlink(zFilename);
+  rc = f_unlink((TCHAR *)zFilename);
   if(FR_OK == rc) {
     OSTRACE(("DELETE name=%s, SQLITE_OK\n", zFilename));
     return SQLITE_OK;
@@ -707,7 +709,7 @@ static int rawDelete(
 */
 static int rawAccess(
   sqlite3_vfs *pVfs,         /* Not used on */
-  const char *zFilename,     /* Name of file to check */
+  const char *zFilename,     /* Name of file to check (UTF-8) */
   int flags,                 /* Type of test to make on this file */
   int *pResOut               /* OUT: Result */
 ){
@@ -720,7 +722,7 @@ static int rawAccess(
 
   assert( pResOut );
 
-  rc = f_stat(zFilename, &fi);
+  rc = f_stat((TCHAR *)zFilename, &fi);
 
   switch( flags ){
     case SQLITE_ACCESS_READ:
@@ -742,7 +744,7 @@ static int osGetcwd(char *zOut, int nOut)
   int rc;
   assert( zOut );
 
-  rc = f_getcwd(zOut, nOut);
+  rc = f_getcwd((TCHAR *)zOut, nOut);
   if(FR_OK != rc)
   {
     return 0;
@@ -847,7 +849,7 @@ static int rawSleep(sqlite3_vfs *pVfs, int microsec){
 ** current time and date as a Julian Day number into *prNow and
 ** return 0.  Return 1 if the time and date cannot be found.
 */
-int rawCurrentTime(sqlite3_vfs *pVfs, double *prNow){
+static int rawCurrentTime(sqlite3_vfs *pVfs, double *prNow){
   static const sqlite3_int64 epoch = 24405875*(sqlite3_int64)8640000;
   sqlite3_int64 t;
   CLK_DATE_TIME dt;

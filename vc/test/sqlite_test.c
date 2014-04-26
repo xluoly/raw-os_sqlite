@@ -14,7 +14,9 @@
 */
 #if defined(_WIN32) || defined(WIN32)
 /* This needs to come before any includes for MSVC compiler */
+#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
+#endif
 #endif
 
 #include <stdlib.h>
@@ -215,6 +217,16 @@ static sqlite_task_param_t sqlite_task_param;
 
 #if defined(USE_FATFS)
 #include "ff.h"
+#endif
+
+#ifdef UNICODE
+#if !_LFN_UNICODE
+#error Configuration mismatch. _LFN_UNICODE must be 1.
+#endif
+#else
+#if _LFN_UNICODE
+#error Configuration mismatch. _LFN_UNICODE must be 0.
+#endif
 #endif
 
 static BYTE heap[1024 * 1024 * 10];
@@ -3626,8 +3638,9 @@ void task_sqlite_shell(void *pParam){
 #if defined(USE_FATFS)
   FRESULT res;
   FATFS fs;
+  TCHAR ld[] = {_T("0:")};
 
-  res = f_mount(&fs, "0:", 0);
+  res = f_mount(&fs, ld, 0);
   if (FR_OK != res)
   {
     fprintf(stderr, "Fail to mount fs.\n");
@@ -3635,7 +3648,7 @@ void task_sqlite_shell(void *pParam){
     exit(1);
   }
 
-  res = f_mkfs("0:", 0, 0);
+  res = f_mkfs(ld, 0, 512);
   if (FR_OK != res)
   {
     fprintf(stderr, "Fail to format fs.\n");

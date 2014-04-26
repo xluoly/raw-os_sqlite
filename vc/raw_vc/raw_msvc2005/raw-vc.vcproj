@@ -137,7 +137,7 @@
 				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
 				Optimization="4"
 				AdditionalIncludeDirectories="../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../port;../../../raw-os/extension/include;../../../raw-os/extension/include/stm"
-				PreprocessorDefinitions="UNICODE;WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_HAVE_SQLITE_CONFIG_H;RAW_OS;USE_FATFS"
+				PreprocessorDefinitions="UNICODE;_UNICODE;WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_HAVE_SQLITE_CONFIG_H;RAW_OS;USE_FATFS"
 				GeneratePreprocessedFile="0"
 				ExceptionHandling="1"
 				RuntimeLibrary="3"
