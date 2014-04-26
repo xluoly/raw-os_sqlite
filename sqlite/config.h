@@ -2,7 +2,7 @@
 #define SQLITE_CONFIG_H_
 
 #define SQLITE_DEBUG          1
-#define SQLITE_DEBUG_OS_TRACE 1
+//#define SQLITE_DEBUG_OS_TRACE 1
 
 #define SQLITE_THREADSAFE     0
 
@@ -18,6 +18,9 @@
 #define SQLITE_OMIT_LOAD_EXTENSION
 #define SQLITE_OMIT_BLOB_LITERAL
 #define SQLITE_OMIT_MEMORYDB
+
+#define SQLITE_ZERO_MALLOC    1
+#define SQLITE_ENABLE_MEMSYS5 1
 
 #if defined(RAW_OS) && defined(USE_FATFS)
 #define SQLITE_OS_OTHER  1

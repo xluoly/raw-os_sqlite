@@ -669,7 +669,23 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\..\sqlite\mem0.c"
+					>
+				</File>
+				<File
 					RelativePath="..\..\..\sqlite\mem1.c"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\sqlite\mem2.c"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\sqlite\mem3.c"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\sqlite\mem5.c"
 					>
 				</File>
 				<File

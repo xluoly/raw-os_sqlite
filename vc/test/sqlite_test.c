@@ -217,6 +217,8 @@ static sqlite_task_param_t sqlite_task_param;
 #include "ff.h"
 #endif
 
+static BYTE heap[1024 * 1024 * 10];
+
 /**************************************************************************
 ***************************************************************************
 ** Begin genfkey logic.
@@ -3426,6 +3428,10 @@ int sqlite_shell(int argc, char **argv){
     return 1;
   }
 #endif
+
+  /* Specifies a static memory buffer that SQLite will use for the MEMSYS5 memory allocator.
+  */
+  sqlite3_config(SQLITE_CONFIG_HEAP, heap, sizeof(heap), 8);
 
   /* Go ahead and open the database file if it already exists.  If the
   ** file does not exist, delay opening it.  This prevents empty database
