@@ -75,7 +75,7 @@
 / May 15,'10 R0.08  Added a memory configuration option. (_USE_LFN = 3)
 /                   Added file lock feature. (_FS_SHARE)
 /                   Added fast seek feature. (_USE_FASTSEEK)
-/                   Changed some types on the API, XCHAR->TCHAR2.
+/                   Changed some types on the API, XCHAR->TCHAR.
 /                   Changed .fname in the FILINFO structure on Unicode cfg.
 /                   String functions support UTF-8 encoding files on Unicode cfg.
 / Aug 16,'10 R0.08a Added f_getcwd().
@@ -1736,7 +1736,7 @@ void get_fileinfo (		/* No return code */
 )
 {
 	UINT i;
-	TCHAR2 *p, c;
+	TCHAR *p, c;
 
 
 	p = fno->fname;
@@ -1745,9 +1745,9 @@ void get_fileinfo (		/* No return code */
 
 		i = 0;
 		while (i < 11) {		/* Copy name body and extension */
-			c = (TCHAR2)dir[i++];
+			c = (TCHAR)dir[i++];
 			if (c == ' ') continue;			/* Skip padding spaces */
-			if (c == NDDE) c = (TCHAR2)DDE;	/* Restore replaced DDE character */
+			if (c == NDDE) c = (TCHAR)DDE;	/* Restore replaced DDE character */
 			if (i == 9) *p++ = '.';			/* Insert a . if extension is exist */
 #if _USE_LFN
 			if (IsUpper(c) && (dir[DIR_NTres] & (i >= 9 ? NS_EXT : NS_BODY)))
@@ -1780,10 +1780,10 @@ void get_fileinfo (		/* No return code */
 				w = ff_convert(w, 0);		/* Unicode -> OEM */
 				if (!w) { i = 0; break; }	/* No LFN if it could not be converted */
 				if (_DF1S && w >= 0x100)	/* Put 1st byte if it is a DBC (always false on SBCS cfg) */
-					p[i++] = (TCHAR2)(w >> 8);
+					p[i++] = (TCHAR)(w >> 8);
 #endif
 				if (i >= fno->lfsize - 1) { i = 0; break; }	/* No LFN if buffer overflow */
-				p[i++] = (TCHAR2)w;
+				p[i++] = (TCHAR)w;
 			}
 		}
 		p[i] = 0;	/* Terminate LFN string by a \0 */
@@ -1802,14 +1802,14 @@ void get_fileinfo (		/* No return code */
 static
 FRESULT create_name (
 	DIR* dp,			/* Pointer to the directory object */
-	const TCHAR2** path	/* Pointer to pointer to the segment in the path string */
+	const TCHAR** path	/* Pointer to pointer to the segment in the path string */
 )
 {
 #if _USE_LFN	/* LFN configuration */
 	BYTE b, cf;
 	WCHAR w, *lfn;
 	UINT i, ni, si, di;
-	const TCHAR2 *p;
+	const TCHAR *p;
 
 	/* Create LFN in Unicode */
 	for (p = *path; *p == '/' || *p == '\\'; p++) ;	/* Strip duplicated separator */
@@ -2012,7 +2012,7 @@ FRESULT create_name (
 static
 FRESULT follow_path (	/* FR_OK(0): successful, !=0: error code */
 	DIR* dp,			/* Directory object to return last directory and found object */
-	const TCHAR2* path	/* Full-path string to find a file or directory */
+	const TCHAR* path	/* Full-path string to find a file or directory */
 )
 {
 	FRESULT res;
@@ -2073,10 +2073,10 @@ FRESULT follow_path (	/* FR_OK(0): successful, !=0: error code */
 
 static
 int get_ldnumber (		/* Returns logical drive number (-1:invalid drive) */
-	const TCHAR2** path	/* Pointer to pointer to the path name */
+	const TCHAR** path	/* Pointer to pointer to the path name */
 )
 {
-	const TCHAR2 *tp, *tt;
+	const TCHAR *tp, *tt;
 	UINT i;
 	int vol = -1;
 
@@ -2096,7 +2096,7 @@ int get_ldnumber (		/* Returns logical drive number (-1:invalid drive) */
 				static const char* const str[] = {_VOLUME_STRS};
 				const char *sp;
 				char c;
-				TCHAR2 tc;
+				TCHAR tc;
 
 				i = 0; tt++;
 				do {
@@ -2104,7 +2104,7 @@ int get_ldnumber (		/* Returns logical drive number (-1:invalid drive) */
 					do {	/* Compare a string drive id with path name */
 						c = *sp++; tc = *tp++;
 						if (IsLower(tc)) tc -= 0x20;
-					} while (c && (TCHAR2)c == tc);
+					} while (c && (TCHAR)c == tc);
 				} while ((c || tp != tt) && ++i < _VOLUMES);	/* Repeat for each id until pattern match */
 				if (i < _VOLUMES) {	/* If a drive id is found, get the value and strip it */
 					vol = (int)i;
@@ -2161,7 +2161,7 @@ BYTE check_fs (	/* 0:FAT boor sector, 1:Valid boor sector but not FAT, 2:Not a b
 static
 FRESULT find_volume (	/* FR_OK(0): successful, !=0: any error occurred */
 	FATFS** rfs,		/* Pointer to pointer to the found file system object */
-	const TCHAR2** path,	/* Pointer to pointer to the path name (drive number) */
+	const TCHAR** path,	/* Pointer to pointer to the path name (drive number) */
 	BYTE wmode			/* !=0: Check write protection for write access */
 )
 {
@@ -2365,14 +2365,14 @@ FRESULT validate (	/* FR_OK(0): The object is valid, !=0: Invalid */
 
 FRESULT f_mount (
 	FATFS* fs,			/* Pointer to the file system object (NULL:unmount)*/
-	const TCHAR2* path,	/* Logical drive number to be mounted/unmounted */
+	const TCHAR* path,	/* Logical drive number to be mounted/unmounted */
 	BYTE opt			/* 0:Do not mount (delayed mount), 1:Mount immediately */
 )
 {
 	FATFS *cfs;
 	int vol;
 	FRESULT res;
-	const TCHAR2 *rp = path;
+	const TCHAR *rp = path;
 
 
 	vol = get_ldnumber(&rp);
@@ -2412,7 +2412,7 @@ FRESULT f_mount (
 
 FRESULT f_open (
 	FIL* fp,			/* Pointer to the blank file object */
-	const TCHAR2* path,	/* Pointer to the file name */
+	const TCHAR* path,	/* Pointer to the file name */
 	BYTE mode			/* Access mode and file open mode flags */
 )
 {
@@ -2856,7 +2856,7 @@ FRESULT f_close (
 #if _FS_RPATH >= 1
 #if _VOLUMES >= 2
 FRESULT f_chdrive (
-	const TCHAR2* path		/* Drive number */
+	const TCHAR* path		/* Drive number */
 )
 {
 	int vol;
@@ -2873,7 +2873,7 @@ FRESULT f_chdrive (
 
 
 FRESULT f_chdir (
-	const TCHAR2* path	/* Pointer to the directory path */
+	const TCHAR* path	/* Pointer to the directory path */
 )
 {
 	FRESULT res;
@@ -2906,7 +2906,7 @@ FRESULT f_chdir (
 
 #if _FS_RPATH >= 2
 FRESULT f_getcwd (
-	TCHAR2* buff,	/* Pointer to the directory path */
+	TCHAR* buff,	/* Pointer to the directory path */
 	UINT len		/* Size of path */
 )
 {
@@ -2914,14 +2914,14 @@ FRESULT f_getcwd (
 	DIR dj;
 	UINT i, n;
 	DWORD ccl;
-	TCHAR2 *tp;
+	TCHAR *tp;
 	FILINFO fno;
 	DEF_NAMEBUF;
 
 
 	*buff = 0;
 	/* Get logical drive number */
-	res = find_volume(&dj.fs, (const TCHAR2**)&buff, 0);	/* Get current volume */
+	res = find_volume(&dj.fs, (const TCHAR**)&buff, 0);	/* Get current volume */
 	if (res == FR_OK) {
 		INIT_BUF(dj);
 		i = len;			/* Bottom of buffer (directory stack base) */
@@ -3148,7 +3148,7 @@ FRESULT f_lseek (
 
 FRESULT f_opendir (
 	DIR* dp,			/* Pointer to directory object to create */
-	const TCHAR2* path	/* Pointer to the directory path */
+	const TCHAR* path	/* Pointer to the directory path */
 )
 {
 	FRESULT res;
@@ -3277,7 +3277,7 @@ FRESULT f_readdir (
 /*-----------------------------------------------------------------------*/
 
 FRESULT f_stat (
-	const TCHAR2* path,	/* Pointer to the file path */
+	const TCHAR* path,	/* Pointer to the file path */
 	FILINFO* fno		/* Pointer to file information to return */
 )
 {
@@ -3312,7 +3312,7 @@ FRESULT f_stat (
 /*-----------------------------------------------------------------------*/
 
 FRESULT f_getfree (
-	const TCHAR2* path,	/* Path name of the logical drive number */
+	const TCHAR* path,	/* Path name of the logical drive number */
 	DWORD* nclst,		/* Pointer to a variable to return number of free clusters */
 	FATFS** fatfs		/* Pointer to return pointer to corresponding file system object */
 )
@@ -3435,7 +3435,7 @@ FRESULT f_truncate (
 /*-----------------------------------------------------------------------*/
 
 FRESULT f_unlink (
-	const TCHAR2* path		/* Pointer to the file or directory path */
+	const TCHAR* path		/* Pointer to the file or directory path */
 )
 {
 	FRESULT res;
@@ -3505,7 +3505,7 @@ FRESULT f_unlink (
 /*-----------------------------------------------------------------------*/
 
 FRESULT f_mkdir (
-	const TCHAR2* path		/* Pointer to the directory path */
+	const TCHAR* path		/* Pointer to the directory path */
 )
 {
 	FRESULT res;
@@ -3579,7 +3579,7 @@ FRESULT f_mkdir (
 /*-----------------------------------------------------------------------*/
 
 FRESULT f_chmod (
-	const TCHAR2* path,	/* Pointer to the file path */
+	const TCHAR* path,	/* Pointer to the file path */
 	BYTE value,			/* Attribute bits */
 	BYTE mask			/* Attribute mask to change */
 )
@@ -3622,7 +3622,7 @@ FRESULT f_chmod (
 /*-----------------------------------------------------------------------*/
 
 FRESULT f_utime (
-	const TCHAR2* path,	/* Pointer to the file/directory name */
+	const TCHAR* path,	/* Pointer to the file/directory name */
 	const FILINFO* fno	/* Pointer to the time stamp to be set */
 )
 {
@@ -3664,8 +3664,8 @@ FRESULT f_utime (
 /*-----------------------------------------------------------------------*/
 
 FRESULT f_rename (
-	const TCHAR2* path_old,	/* Pointer to the object to be renamed */
-	const TCHAR2* path_new	/* Pointer to the new name */
+	const TCHAR* path_old,	/* Pointer to the object to be renamed */
+	const TCHAR* path_new	/* Pointer to the new name */
 )
 {
 	FRESULT res;
@@ -3748,8 +3748,8 @@ FRESULT f_rename (
 /*-----------------------------------------------------------------------*/
 
 FRESULT f_getlabel (
-	const TCHAR2* path,	/* Path name of the logical drive number */
-	TCHAR2* label,		/* Pointer to a buffer to return the volume label */
+	const TCHAR* path,	/* Path name of the logical drive number */
+	TCHAR* label,		/* Pointer to a buffer to return the volume label */
 	DWORD* sn			/* Pointer to a variable to return the volume serial number */
 )
 {
@@ -3813,7 +3813,7 @@ FRESULT f_getlabel (
 /*-----------------------------------------------------------------------*/
 
 FRESULT f_setlabel (
-	const TCHAR2* label	/* Pointer to the volume label to set */
+	const TCHAR* label	/* Pointer to the volume label to set */
 )
 {
 	FRESULT res;
@@ -3971,7 +3971,7 @@ FRESULT f_forward (
 
 
 FRESULT f_mkfs (
-	const TCHAR2* path,	/* Logical drive number */
+	const TCHAR* path,	/* Logical drive number */
 	BYTE sfd,			/* Partitioning rule 0:FDISK, 1:SFD */
 	UINT au				/* Allocation unit [bytes] */
 )
@@ -4288,14 +4288,14 @@ FRESULT f_fdisk (
 /* Get a string from the file                                            */
 /*-----------------------------------------------------------------------*/
 
-TCHAR2* f_gets (
-	TCHAR2* buff,	/* Pointer to the string buffer to read */
+TCHAR* f_gets (
+	TCHAR* buff,	/* Pointer to the string buffer to read */
 	int len,		/* Size of string buffer (characters) */
 	FIL* fp			/* Pointer to the file object */
 )
 {
 	int n = 0;
-	TCHAR2 c, *p = buff;
+	TCHAR c, *p = buff;
 	BYTE s[2];
 	UINT rc;
 
@@ -4376,7 +4376,7 @@ typedef struct {
 static
 void putc_bfd (
 	putbuff* pb,
-	TCHAR2 c
+	TCHAR c
 )
 {
 	UINT bw;
@@ -4430,7 +4430,7 @@ void putc_bfd (
 
 
 int f_putc (
-	TCHAR2 c,	/* A character to be output */
+	TCHAR c,	/* A character to be output */
 	FIL* fp		/* Pointer to the file object */
 )
 {
@@ -4457,7 +4457,7 @@ int f_putc (
 /*-----------------------------------------------------------------------*/
 
 int f_puts (
-	const TCHAR2* str,	/* Pointer to the string to be output */
+	const TCHAR* str,	/* Pointer to the string to be output */
 	FIL* fp				/* Pointer to the file object */
 )
 {
@@ -4486,7 +4486,7 @@ int f_puts (
 
 int f_printf (
 	FIL* fp,			/* Pointer to the file object */
-	const TCHAR2* fmt,	/* Pointer to the format string */
+	const TCHAR* fmt,	/* Pointer to the format string */
 	...					/* Optional arguments... */
 )
 {
@@ -4494,7 +4494,7 @@ int f_printf (
 	BYTE f, r;
 	UINT nw, i, j, w;
 	DWORD v;
-	TCHAR2 c, d, s[16], *p;
+	TCHAR c, d, s[16], *p;
 	putbuff pb;
 
 
@@ -4531,7 +4531,7 @@ int f_printf (
 		if (IsLower(d)) d -= 0x20;
 		switch (d) {				/* Type is... */
 		case 'S' :					/* String */
-			p = va_arg(arp, TCHAR2*);
+			p = va_arg(arp, TCHAR*);
 			for (j = 0; p[j]; j++) ;
 			if (!(f & 2)) {
 				while (j++ < w) putc_bfd(&pb, ' ');
@@ -4540,7 +4540,7 @@ int f_printf (
 			while (j++ < w) putc_bfd(&pb, ' ');
 			continue;
 		case 'C' :					/* Character */
-			putc_bfd(&pb, (TCHAR2)va_arg(arp, int)); continue;
+			putc_bfd(&pb, (TCHAR)va_arg(arp, int)); continue;
 		case 'B' :					/* Binary */
 			r = 2; break;
 		case 'O' :					/* Octal */
@@ -4562,7 +4562,7 @@ int f_printf (
 		}
 		i = 0;
 		do {
-			d = (TCHAR2)(v % r); v /= r;
+			d = (TCHAR)(v % r); v /= r;
 			if (d > 9) d += (c == 'x') ? 0x27 : 0x07;
 			s[i++] = d + '0';
 		} while (v && i < sizeof s / sizeof s[0]);

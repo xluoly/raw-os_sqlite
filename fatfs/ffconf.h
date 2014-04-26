@@ -107,7 +107,7 @@
 
 
 #define	_LFN_UNICODE	0	/* 0:ANSI/OEM or 1:Unicode */
-/* To switch the character encoding on the FatFs API (TCHAR2) to Unicode, enable LFN
+/* To switch the character encoding on the FatFs API (TCHAR) to Unicode, enable LFN
 /  feature and set _LFN_UNICODE to 1. This option affects behavior of string I/O
 /  functions. */
 
