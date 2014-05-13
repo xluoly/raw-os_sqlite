@@ -185,32 +185,33 @@
     <ClCompile Include="..\..\..\sqlite\wal.c" />
     <ClCompile Include="..\..\..\sqlite\walker.c" />
     <ClCompile Include="..\..\..\sqlite\where.c" />
-    <ClCompile Include="..\..\port\port.c" />
-    <ClCompile Include="..\..\port\port_hook.c" />
-    <ClCompile Include="..\..\port\raw_trace_port.c" />
-    <ClCompile Include="..\..\port\win_util.c" />
-    <ClCompile Include="..\..\test\bit_search_test.c" />
-    <ClCompile Include="..\..\test\event_test.c" />
-    <ClCompile Include="..\..\test\fatfs_test.c" />
-    <ClCompile Include="..\..\test\idle_event_test.c" />
-    <ClCompile Include="..\..\test\interrupt_test.c" />
-    <ClCompile Include="..\..\test\main.c" />
-    <ClCompile Include="..\..\test\mem_test.c" />
-    <ClCompile Include="..\..\test\mqueue_test2.c" />
-    <ClCompile Include="..\..\test\multipend.c" />
-    <ClCompile Include="..\..\test\mutex_test .c" />
-    <ClCompile Include="..\..\test\queue_buffer_test.c" />
-    <ClCompile Include="..\..\test\rbtree_test.c" />
-    <ClCompile Include="..\..\test\sem_test.c" />
-    <ClCompile Include="..\..\test\task_0_test.c" />
-    <ClCompile Include="..\..\test\task_queue_size_test.c" />
-    <ClCompile Include="..\..\test\task_sem_test.c" />
-    <ClCompile Include="..\..\test\task_test.c" />
-    <ClCompile Include="..\..\test\timer_test.c" />
-    <ClCompile Include="..\..\test\tlsf_test.c" />
-    <ClCompile Include="..\..\test\user_extension.c" />
-    <ClCompile Include="..\..\test\work_queue_test.c" />
-    <ClCompile Include="..\..\test\zero_interrupt_test.c" />
+    <ClCompile Include="..\..\..\port\win32\port.c" />
+    <ClCompile Include="..\..\..\port\win32\port_hook.c" />
+    <ClCompile Include="..\..\..\port\win32\raw_trace_port.c" />
+    <ClCompile Include="..\..\..\port\win32\win_util.c" />
+    <ClCompile Include="..\..\..\examples\bit_search_test.c" />
+    <ClCompile Include="..\..\..\examples\event_test.c" />
+    <ClCompile Include="..\..\..\examples\fatfs_test.c" />
+    <ClCompile Include="..\..\..\examples\sqlite_test.c" />
+    <ClCompile Include="..\..\..\examples\idle_event_test.c" />
+    <ClCompile Include="..\..\..\examples\interrupt_test.c" />
+    <ClCompile Include="..\..\..\examples\main.c" />
+    <ClCompile Include="..\..\..\examples\mem_test.c" />
+    <ClCompile Include="..\..\..\examples\mqueue_test2.c" />
+    <ClCompile Include="..\..\..\examples\multipend.c" />
+    <ClCompile Include="..\..\..\examples\mutex_test.c" />
+    <ClCompile Include="..\..\..\examples\queue_buffer_test.c" />
+    <ClCompile Include="..\..\..\examples\rbtree_test.c" />
+    <ClCompile Include="..\..\..\examples\sem_test.c" />
+    <ClCompile Include="..\..\..\examples\task_0_test.c" />
+    <ClCompile Include="..\..\..\examples\task_queue_size_test.c" />
+    <ClCompile Include="..\..\..\examples\task_sem_test.c" />
+    <ClCompile Include="..\..\..\examples\task_test.c" />
+    <ClCompile Include="..\..\..\examples\timer_test.c" />
+    <ClCompile Include="..\..\..\examples\tlsf_test.c" />
+    <ClCompile Include="..\..\..\examples\user_extension.c" />
+    <ClCompile Include="..\..\..\examples\work_queue_test.c" />
+    <ClCompile Include="..\..\..\examples\zero_interrupt_test.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C55207EC-8E8C-4D0A-9F18-A09F85724352}</ProjectGuid>
@@ -250,8 +251,8 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../port;../../../raw-os/extension/include;../../../raw-os/extension/include/stm</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;UNICODE;_UNICODE;_HAVE_SQLITE_CONFIG_H;RAW_OS;USE_FATFS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../../port/win32;../../../raw-os/extension/include;../../../raw-os/extension/include/stm</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
@@ -266,8 +267,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../../raw-os/include;../../port;../../../raw-os/extension/include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;UNICODE;_UNICODE;_HAVE_SQLITE_CONFIG_H;RAW_OS;USE_FATFS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../../../raw-os/include;../../../port/win32;../../../raw-os/extension/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

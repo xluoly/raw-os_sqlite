@@ -45,8 +45,8 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
 				Optimization="2"
-				AdditionalIncludeDirectories="../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../port;../../../raw-os/extension/include;../../../raw-os/extension/include/stm"
-				PreprocessorDefinitions="NDEBUG;UNICODE;WIN32;RAW_OS"
+                AdditionalIncludeDirectories="../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../../port/win32;../../../raw-os/extension/include;../../../raw-os/extension/include/stm"
+				PreprocessorDefinitions="NDEBUG;UNICODE;_UNICODE;WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_HAVE_SQLITE_CONFIG_H;RAW_OS;USE_FATFS"
 				GeneratePreprocessedFile="0"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
@@ -59,6 +59,7 @@
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="0"
+				DisableSpecificWarnings="4100"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -73,7 +74,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
-				OutputFile="release\RawOS.exe"
+				OutputFile="release\sqlite.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				GenerateDebugInformation="false"
@@ -136,7 +137,7 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="-Zm200 -w34100 -w34189 -w34100 -w34189"
 				Optimization="4"
-				AdditionalIncludeDirectories="../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../port;../../../raw-os/extension/include;../../../raw-os/extension/include/stm"
+                AdditionalIncludeDirectories="../../../sqlite;../../../rtc;../../../fatfs;../../../raw-os/include;../../../port/win32;../../../raw-os/extension/include;../../../raw-os/extension/include/stm"
 				PreprocessorDefinitions="UNICODE;_UNICODE;WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_HAVE_SQLITE_CONFIG_H;RAW_OS;USE_FATFS"
 				GeneratePreprocessedFile="0"
 				ExceptionHandling="1"
@@ -150,6 +151,7 @@
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4100"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -164,7 +166,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				IgnoreImportLibrary="true"
-				OutputFile="debug\RawOS.exe"
+				OutputFile="debug\sqlite.exe"
 				SuppressStartupBanner="true"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=""
@@ -281,11 +283,11 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\port\port.c"
+					RelativePath="..\..\..\port\win32\port.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\port\port_hook.c"
+					RelativePath="..\..\..\port\win32\port_hook.c"
 					>
 				</File>
 				<File
@@ -429,7 +431,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\port\raw_trace_port.c"
+					RelativePath="..\..\..\port\win32\raw_trace_port.c"
 					>
 				</File>
 				<File
@@ -477,7 +479,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\port\win_util.c"
+					RelativePath="..\..\..\port\win32\win_util.c"
 					>
 				</File>
 			</Filter>
@@ -854,98 +856,98 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="test"
+				Name="examples"
 				>
 				<File
-					RelativePath="..\..\test\bit_search_test.c"
+					RelativePath="..\..\..\examples\bit_search_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\event_test.c"
+					RelativePath="..\..\..\examples\event_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\fatfs_test.c"
+					RelativePath="..\..\..\examples\fatfs_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\idle_event_test.c"
+					RelativePath="..\..\..\examples\idle_event_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\interrupt_test.c"
+					RelativePath="..\..\..\examples\interrupt_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\main.c"
+					RelativePath="..\..\..\examples\main.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\mem_test.c"
+					RelativePath="..\..\..\examples\mem_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\mqueue_test2.c"
+					RelativePath="..\..\..\examples\mqueue_test2.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\multipend.c"
+					RelativePath="..\..\..\examples\multipend.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\mutex_test .c"
+					RelativePath="..\..\..\examples\mutex_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\queue_buffer_test.c"
+					RelativePath="..\..\..\examples\queue_buffer_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\rbtree_test.c"
+					RelativePath="..\..\..\examples\rbtree_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\sem_test.c"
+					RelativePath="..\..\..\examples\sem_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\sqlite_test.c"
+					RelativePath="..\..\..\examples\sqlite_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\task_0_test.c"
+					RelativePath="..\..\..\examples\task_0_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\task_queue_size_test.c"
+					RelativePath="..\..\..\examples\task_queue_size_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\task_sem_test.c"
+					RelativePath="..\..\..\examples\task_sem_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\task_test.c"
+					RelativePath="..\..\..\examples\task_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\timer_test.c"
+					RelativePath="..\..\..\examples\timer_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\tlsf_test.c"
+					RelativePath="..\..\..\examples\tlsf_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\user_extension.c"
+					RelativePath="..\..\..\examples\user_extension.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\work_queue_test.c"
+					RelativePath="..\..\..\examples\work_queue_test.c"
 					>
 				</File>
 				<File
-					RelativePath="..\..\test\zero_interrupt_test.c"
+					RelativePath="..\..\..\examples\zero_interrupt_test.c"
 					>
 				</File>
 			</Filter>
@@ -979,15 +981,19 @@
 				Name="rawos"
 				>
 				<File
-					RelativePath="..\..\port\port.h"
+					RelativePath="..\..\..\port\win32\port.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\port\port_extension.h"
+					RelativePath="..\..\..\port\win32\port_extension.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\port\port_idle_config.h"
+					RelativePath="..\..\..\port\win32\port_idle_config.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\raw-os\extension\include\posix\pthread.h"
 					>
 				</File>
 				<File
@@ -1007,7 +1013,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\port\raw_cpu.h"
+					RelativePath="..\..\..\port\win32\raw_cpu.h"
 					>
 				</File>
 				<File
@@ -1099,11 +1105,11 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\port\raw_type.h"
+					RelativePath="..\..\..\port\win32\raw_type.h"
 					>
 				</File>
 				<File
-					RelativePath="..\..\port\win_util.h"
+					RelativePath="..\..\..\port\win32\win_util.h"
 					>
 				</File>
 			</Filter>

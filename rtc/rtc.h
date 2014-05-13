@@ -463,8 +463,8 @@ RAW_U16 clk_os_wait(void);
 RAW_U16	rtc_init(void);
 RAW_U16 clk_os_signal(void);
 RAW_U16  Clk_SignalClk(void);
-RAW_U16 Clk_Init();
-RAW_U16  Clk_SignalClk ();
+RAW_U16 Clk_Init(void);
+RAW_U16  Clk_SignalClk (void);
 CLK_TS_SEC  Clk_GetTS (void);
 
 

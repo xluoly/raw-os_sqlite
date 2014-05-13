@@ -12,7 +12,6 @@
 ** Internal interface definitions for SQLite.
 **
 */
-#include "sqlite3.h"
 #ifndef _SQLITEINT_H_
 #define _SQLITEINT_H_
 
@@ -52,6 +51,7 @@
 #include "config.h"
 #endif
 
+#include "sqlite3.h"
 #include "sqliteLimit.h"
 
 /* Disable nuisance warnings on Borland compilers */

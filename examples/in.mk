@@ -1,0 +1,25 @@
+INC += $(ROOT)/examples
+
+SRC += examples/bit_search_test.c
+SRC += examples/event_test.c
+SRC += examples/fatfs_test.c
+SRC += examples/idle_event_test.c
+SRC += examples/interrupt_test.c
+SRC += examples/main.c
+SRC += examples/mem_test.c
+SRC += examples/mqueue_test2.c
+SRC += examples/multipend.c
+SRC += examples/mutex_test.c
+SRC += examples/queue_buffer_test.c
+SRC += examples/rbtree_test.c
+SRC += examples/sem_test.c
+SRC += examples/sqlite_test.c
+SRC += examples/task_0_test.c
+SRC += examples/task_queue_size_test.c
+SRC += examples/task_sem_test.c
+SRC += examples/task_test.c
+SRC += examples/timer_test.c
+SRC += examples/tlsf_test.c
+SRC += examples/user_extension.c
+SRC += examples/work_queue_test.c
+SRC += examples/zero_interrupt_test.c

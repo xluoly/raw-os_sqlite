@@ -7,3 +7,25 @@ Raw-OS_Sqlite is a [Sqlite3](http://www.sqlite.org/) porting on [Raw-OS](http://
 
 ![sqlite_shell](https://github.com/xluoly/raw-os_sqlite/raw/master/images/sqlite_shell.png)
 
+---
+##How to build
+
+###MinGW
+
+    $ cd port/win32/mingw
+    $ make
+
+###MSVC2005
+Open file port\win32\msvc2005\raw-vc.sln with Microsoft Visual Studio 2005, and run *build solution*.
+
+###MSVC2010
+Open file port\win32\msvc2010\raw-vc.sln with Microsoft Visual Studio 2010, and run *build solution*.
+
+##How to run
+
+Open DOS command prompt, and CD to excuable output directory.
+
+    > sqlite 0:database.db 
+
+For more infomation, please refer to [this](http://www.sqlite.org/cli.html).
+Enjoy it. 

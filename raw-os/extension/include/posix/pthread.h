@@ -51,11 +51,13 @@ typedef struct pthread_struct {
 } pthread_struct;
 
 
-
+#ifndef _TIMESPEC_DEFINED
+#define _TIMESPEC_DEFINED
 struct timespec {
 	long tv_sec;			
 	long tv_nsec;			
 };
+#endif
 
 struct timeval {
     RAW_S32    tv_sec;         

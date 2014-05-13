@@ -111,7 +111,7 @@
     <ClCompile Include="..\..\..\raw-os\extension\posix\pthread.c">
       <Filter>posix</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\port\port_hook.c">
+    <ClCompile Include="..\..\..\port\win32\port_hook.c">
       <Filter>port</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\raw-os\extension\posix\semphore.c">
@@ -126,7 +126,7 @@
     <ClCompile Include="..\..\..\raw-os\extension\lib\fifo.c">
       <Filter>extension\lib</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\port\win_util.c">
+    <ClCompile Include="..\..\..\port\win32\win_util.c">
       <Filter>port</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\raw-os\extension\shell\rsh.c">
@@ -159,7 +159,7 @@
     <ClCompile Include="..\..\..\raw-os\extension\rf\active_queue_broadcast.c">
       <Filter>extension\rf</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\port\port.c">
+    <ClCompile Include="..\..\..\port\win32\port.c">
       <Filter>port</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\raw-os\raw_idle.c">
@@ -207,7 +207,7 @@
     <ClCompile Include="..\..\..\raw-os\raw_task_sem.c">
       <Filter>kernel</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\port\raw_trace_port.c">
+    <ClCompile Include="..\..\..\port\win32\raw_trace_port.c">
       <Filter>port</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\raw-os\raw_queue_buffer.c">

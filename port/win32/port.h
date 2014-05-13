@@ -59,7 +59,7 @@ void raw_start_first_task(void);
 
 #if (CONFIG_RAW_USER_HOOK > 0)
 
-RAW_VOID raw_os_init_hook();
+RAW_VOID raw_os_init_hook(void);
 
 RAW_VOID task_create_hook(RAW_TASK_OBJ *task_ptr);
 

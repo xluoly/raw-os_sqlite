@@ -58,7 +58,7 @@ typedef struct Bomb4Tag {
 	
 } Bomb4;
 
-void Bomb4_ctor(Bomb4 *me, RAW_U8 defuse);
+static void Bomb4_ctor(Bomb4 *me, RAW_U8 defuse);
 
 static RAW_U16 Bomb4_initial(Bomb4 *me, 	 	STATE_EVENT  *e);
 static RAW_U16 Bomb4_setting(Bomb4 *me, 	STATE_EVENT  *e);

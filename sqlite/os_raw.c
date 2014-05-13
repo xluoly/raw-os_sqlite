@@ -125,6 +125,7 @@ static const sqlite3_io_methods rawIoMethod = {
 /*******************************************************************************
 * Local Functions                                                              *
 *******************************************************************************/
+#if defined(SQLITE_DEBUG_OS_TRACE)
 static const char * fatfsErrName(FRESULT rc)
 {
   static char const * name[] = {
@@ -156,6 +157,7 @@ static const char * fatfsErrName(FRESULT rc)
 
   return name[rc];
 }
+#endif
 
 /*
 ** Create a temporary file name in zBuf.  zBuf must be big enough to
@@ -212,7 +214,7 @@ static int osGetTempname(int nBuf, char *zBuf){
 ** Close a file.
 */
 static int rawClose(sqlite3_file *id){
-  int rc;
+  FRESULT rc;
   rawFile *pFile = (rawFile*)id;
 
   assert( id!=0 );
@@ -243,9 +245,9 @@ static int rawRead(
   int amt,                   /* Number of bytes to read */
   sqlite3_int64 offset       /* Begin reading at this offset */
 ){
-  DWORD rc;
+  FRESULT rc;
   rawFile *pFile = (rawFile*)id;
-  DWORD got;
+  UINT got;
 
   assert( id!=0 );
   assert( amt>0 );
@@ -288,9 +290,9 @@ static int rawWrite(
   int amt,                  /* Number of bytes to write */
   sqlite3_int64 offset      /* Offset into the file to begin writing at */
 ){
-  DWORD rc;
+  FRESULT rc;
   rawFile *pFile = (rawFile*)id;
-  DWORD wrote = 0;
+  UINT wrote = 0;
 
   assert( amt>0 );
   assert( pFile );
@@ -328,7 +330,7 @@ static int rawWrite(
 */
 static int rawTruncate(sqlite3_file *id, sqlite3_int64 nByte){
   rawFile *pFile = (rawFile*)id;
-  int rc;
+  FRESULT rc;
 
   assert( pFile );
   assert( nByte>=0 && nByte<=MAXDWORD);
@@ -362,7 +364,7 @@ static int rawTruncate(sqlite3_file *id, sqlite3_int64 nByte){
 ** Make sure all writes to a particular file are committed to disk.
 */
 static int rawSync(sqlite3_file *id, int flags){
-  int rc;
+  FRESULT rc;
   rawFile *pFile = (rawFile*)id;
 
   assert( id!=0 );
@@ -676,7 +678,7 @@ static int rawDelete(
   const char *zFilename,      /* Name of file to delete (UTF-8) */
   int syncDir                 /* Not used */
 ){
-  int rc;
+  FRESULT rc;
 
   UNUSED_PARAMETER(pVfs);
   UNUSED_PARAMETER(syncDir);
@@ -713,7 +715,7 @@ static int rawAccess(
   int flags,                 /* Type of test to make on this file */
   int *pResOut               /* OUT: Result */
 ){
-  int rc;
+  FRESULT rc;
   FILINFO fi;
   UNUSED_PARAMETER(pVfs);
 
@@ -741,7 +743,7 @@ static int rawAccess(
 
 static int osGetcwd(char *zOut, int nOut)
 {
-  int rc;
+  FRESULT rc;
   assert( zOut );
 
   rc = f_getcwd((TCHAR *)zOut, nOut);
