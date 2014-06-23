@@ -411,6 +411,9 @@
     <ClCompile Include="..\..\..\sqlite\os.c">
       <Filter>sqlite</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\os_raw.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\sqlite\os_win.c">
       <Filter>sqlite</Filter>
     </ClCompile>
@@ -573,7 +576,19 @@
     <ClCompile Include="..\..\test\zero_interrupt_test.c">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\mem0.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\sqlite\mem1.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\mem2.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\mem3.c">
+      <Filter>sqlite</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\sqlite\mem5.c">
       <Filter>sqlite</Filter>
     </ClCompile>
   </ItemGroup>

@@ -144,7 +144,11 @@
     <ClCompile Include="..\..\..\sqlite\legacy.c" />
     <ClCompile Include="..\..\..\sqlite\loadext.c" />
     <ClCompile Include="..\..\..\sqlite\malloc.c" />
+    <ClCompile Include="..\..\..\sqlite\mem0.c" />
     <ClCompile Include="..\..\..\sqlite\mem1.c" />
+    <ClCompile Include="..\..\..\sqlite\mem2.c" />
+    <ClCompile Include="..\..\..\sqlite\mem3.c" />
+    <ClCompile Include="..\..\..\sqlite\mem5.c" />
     <ClCompile Include="..\..\..\sqlite\memjournal.c" />
     <ClCompile Include="..\..\..\sqlite\mutex.c" />
     <ClCompile Include="..\..\..\sqlite\mutex_noop.c" />
@@ -153,6 +157,7 @@
     <ClCompile Include="..\..\..\sqlite\notify.c" />
     <ClCompile Include="..\..\..\sqlite\opcodes.c" />
     <ClCompile Include="..\..\..\sqlite\os.c" />
+    <ClCompile Include="..\..\..\sqlite\os_raw.c" />
     <ClCompile Include="..\..\..\sqlite\os_win.c" />
     <ClCompile Include="..\..\..\sqlite\pager.c" />
     <ClCompile Include="..\..\..\sqlite\parse.c" />
